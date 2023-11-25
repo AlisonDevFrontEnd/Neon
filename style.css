@@ -1,0 +1,51 @@
+body {
+  background: #111;
+}
+.neon {
+  cursor: pointer;
+  display: inline-block;
+  font-size: 64px;
+  font-weight: 700;
+  padding: 16px 64px;
+  border: #00ff73 8px solid;
+  border-radius: 16px;
+
+  box-shadow: inset 0 0 32px 0 #00ff73, 0 0 32px 0 #00ff73;
+  text-shadow: 0 0 8px hsl(0 0% 100% / 0.3), 0 0 32px;
+  position: relative;
+}
+.neon::before {
+  content: "";
+  position: absolute;
+  top: 120%;
+  left: 0;
+  background: #00ff73;
+  width: 100%;
+  height: 100%;
+  transform: perspective(64px) rotateX(40deg) scale(1, 0.35);
+  filter: blur(64px);
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.neon::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  box-shadow: 0 0 128px 32px #00ff73;
+  opacity: 0;
+  background-color: #00ff73;
+  z-index: -1;
+  transition: opacity 100ms linear;
+}
+.neon:hover::before,
+.neon:hover::after {
+  opacity: 1;
+}
+.neon:hover {
+  color: #044722;
+  text-shadow: none;
+}
